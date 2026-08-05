@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen">
+            <div class="login-container">
+                <h1>🚀 Anonymous Chat</h1>
+                <p class="subtitle">Choose your one-time username</p>
+                <input type="text" id="usernameInput" placeholder="Enter username" maxlength="20">
+                <input type="text" id="channelInput" placeholder="Channel name (optional)" maxlength="30">
+                <button id="joinBtn">Join Chat</button>
+                <div class="channels">
+                    <p>Popular channels:</p>
+                    <div class="channel-tags">
+                        <span class="channel-tag" data-channel="lounge">#lounge</span>
+                        <span class="channel-tag" data-channel="tech">#tech</span>
+                        <span class="channel-tag" data-channel="games">#games</span>
+                        <span class="channel-tag" data-channel="random">#random</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chatScreen" class="screen" style="display:none">
+            <div class="chat-header">
+                <div class="channel-info">
+                    <span id="currentChannel">#channel</span>
+                    <span id="userCount">0 users</span>
+                    <span id="roomOwner" style="display:none; color: #f39c12; font-size: 12px;">👑 Owner</span>
+                </div>
+                <div class="header-actions">
+                    <button id="roomListBtn" class="header-btn">📋 Rooms</button>
+                    <button id="logoutBtn" class="header-btn">Leave</button>
+                </div>
+            </div>
+            
+            <div id="messageContainer" class="message-container"></div>
+            
+            <div class="input-area">
+                <textarea id="messageInput" rows="2" placeholder="Type your message..."></textarea>
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+
+        <!-- Room List Modal -->
+        <div id="roomModal" class="modal" style="display:none">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Chat Rooms</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="create-room">
+                        <input type="text" id="newRoomInput" placeholder="New room name" maxlength="30">
+                        <button id="createRoomBtn">Create Room</button>
+                    </div>
+                    <div id="roomListContainer">
+                        <!-- Rooms will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
